@@ -17,7 +17,6 @@
 
     <body>
         <h1>Hello world</h1>
-        <img src="{{ Vite::image('avatar.png') }}" alt="Logo" />
     </body>
 
     @livewireScripts
