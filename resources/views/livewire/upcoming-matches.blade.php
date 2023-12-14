@@ -5,7 +5,7 @@
 
     @if (!is_null($matches) && count($matches) > 0)
         @foreach ($matches as $match)
-            @include('components.match-card', $match)
+            <x-match-card :match="$match" />
         @endforeach
     @else
         <div class="row">
