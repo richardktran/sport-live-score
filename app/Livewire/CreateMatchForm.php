@@ -46,10 +46,13 @@ class CreateMatchForm extends Component
 
         if (is_null($match)) {
             session()->flash('error', 'Failed to create match');
-        } else {
-            session()->flash('created', 'Match created successfully');
-            $this->reset();
+
+            return;
         }
+
+        session()->flash('created', 'Match created successfully');
+        $this->reset();
+        $this->dispatch('matchCreated');
     }
 
     public function render(TeamRepository $teamRepository)

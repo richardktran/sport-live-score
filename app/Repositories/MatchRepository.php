@@ -25,4 +25,18 @@ class MatchRepository extends BaseRepository
             return null;
         }
     }
+
+    public function getUpcomingMatches()
+    {
+        try {
+            return $this->model
+                ->with(['homeTeam', 'awayTeam'])
+                ->where('status', FootballMatch::STATUS_SCHEDULED)
+                ->orderBy('match_date', 'asc')
+                ->get();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return null;
+        }
+    }
 }

@@ -21,8 +21,23 @@ class FootballMatch extends Model
         'home_score',
         'away_score',
         'status',
-        'match_date',
         'location',
-        'referee',
+        'match_date',
     ];
+
+    protected $with = ['homeTeam', 'awayTeam'];
+
+    protected $casts = [
+        'match_date' => 'datetime',
+    ];
+
+    public function homeTeam()
+    {
+        return $this->belongsTo(Team::class, 'home_team_id');
+    }
+
+    public function awayTeam()
+    {
+        return $this->belongsTo(Team::class, 'away_team_id');
+    }
 }
