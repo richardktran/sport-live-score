@@ -25,7 +25,7 @@ class FootballMatch extends Model
         'match_date',
     ];
 
-    protected $with = ['homeTeam', 'awayTeam'];
+    protected $with = ['homeTeam', 'awayTeam', 'events'];
 
     protected $casts = [
         'match_date' => 'datetime',
@@ -39,5 +39,10 @@ class FootballMatch extends Model
     public function awayTeam()
     {
         return $this->belongsTo(Team::class, 'away_team_id');
+    }
+
+    public function events()
+    {
+        return $this->hasMany(MatchEvent::class, 'match_id');
     }
 }
