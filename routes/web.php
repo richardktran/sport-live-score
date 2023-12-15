@@ -19,4 +19,4 @@ Route::get('/', function () {
 })->name('home');
 
 // Route for match details
-Route::get('/match/{match}', [MatchController::class, 'getMatchDetails']);
+Route::get('/match/{match}', [MatchController::class, 'getMatchDetails'])->name('match.details');
