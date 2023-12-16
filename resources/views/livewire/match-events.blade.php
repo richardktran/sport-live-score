@@ -63,4 +63,13 @@
         ])
     </div>
 
+
+    @script
+        <script>
+            $wire.on('eventCreated' , () => {
+                console.log('listen');
+            });
+        </script>
+    @endscript
+
 </div>
