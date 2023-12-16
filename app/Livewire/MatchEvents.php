@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\FootballMatch;
-use App\Models\MatchEvent;
 use App\Repositories\MatchEventRepository;
 use Livewire\Attributes\On;
 use Livewire\Component;

@@ -5,10 +5,7 @@ namespace App\Livewire;
 use App\Repositories\MatchEventRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\RequiredIf;
-use Livewire\Attributes\On;
 use Livewire\Component;
-use Symfony\Contracts\Service\Attribute\Required;
 
 class CreateEventForm extends Component
 {

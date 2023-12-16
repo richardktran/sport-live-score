@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use App\Repositories\MatchRepository;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class UpcomingMatches extends Component
 {

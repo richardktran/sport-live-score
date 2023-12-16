@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Exceptions\RepositoryException;
 use App\Models\FootballMatch;
 use App\Models\MatchEvent;
 use App\Supports\Repositories\BaseRepository;
@@ -25,6 +24,7 @@ class MatchEventRepository extends BaseRepository
                 ->get();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             return null;
         }
     }
@@ -36,6 +36,7 @@ class MatchEventRepository extends BaseRepository
             return $this->model->create($data);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             return null;
         }
     }
@@ -50,6 +51,7 @@ class MatchEventRepository extends BaseRepository
                 ->get();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             return null;
         }
     }

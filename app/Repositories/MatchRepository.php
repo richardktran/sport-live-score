@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Exceptions\RepositoryException;
 use App\Models\FootballMatch;
 use App\Supports\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +21,7 @@ class MatchRepository extends BaseRepository
             return $this->model->create($data);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             return null;
         }
     }
@@ -36,6 +36,7 @@ class MatchRepository extends BaseRepository
                 ->get();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+
             return null;
         }
     }
