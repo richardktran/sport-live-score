@@ -18,8 +18,6 @@ class FootballMatch extends Model
     protected $fillable = [
         'home_team_id',
         'away_team_id',
-        'home_score',
-        'away_score',
         'status',
         'location',
         'match_date',
@@ -44,5 +42,21 @@ class FootballMatch extends Model
     public function events()
     {
         return $this->hasMany(MatchEvent::class, 'match_id')->orderBy('event_minute');
+    }
+
+    public function getHomeScoreAttribute()
+    {
+        return $this->events
+            ->where('team_id', $this->home_team_id)
+            ->where('event_type', '==', 'goal')
+            ->count();
+    }
+
+    public function getAwayScoreAttribute()
+    {
+        return $this->events
+            ->where('team_id', $this->away_team_id)
+            ->where('event_type', '==', 'goal')
+            ->count();
     }
 }

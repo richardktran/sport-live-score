@@ -24,20 +24,25 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="player">Scorer: </label>
-                        <select class="form-control" wire:model="player" id="{{ $key }}.player">
-                            <option value="">Select scorer: </option>
-                            @foreach($team->players as $player)
-                                <option value="{{ $player->id }}">{{ $player->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('player') <span class="text-danger">{{ $message }}</span> @enderror
+
+            @if ($this->checkWhetherFieldIsDisplayed('player'))
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="player">{{ $eventType==='goal'?'Scorer':'Player' }}</label>
+                            <select class="form-control" wire:model="player" id="{{ $key }}.player">
+                                <option value="">Select {{ $eventType==='goal'?'scorer':'player' }}: </option>
+                                @foreach($team->players as $player)
+                                    <option value="{{ $player->id }}">{{ $player->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('player') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
+
+            @if ($this->checkWhetherFieldIsDisplayed('assistant'))
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -53,6 +58,43 @@
                     </div>
                 </div>
             </div>
+            @endif
+
+            @if ($this->checkWhetherFieldIsDisplayed('playerIn'))
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="player">Player in: </label>
+                            <select class="form-control" wire:model="playerIn" id="{{ $key }}.playerIn">
+                                <option value="">Select player in: </option>
+                                @foreach($team->players as $player)
+                                    <option value="{{ $player->id }}">{{ $player->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('playerIn') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if ($this->checkWhetherFieldIsDisplayed('playerOut'))
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="playerOut">Player out: </label>
+                            <select class="form-control" wire:model="playerOut">
+                                <option value="">Select player out: </option>
+                                @foreach($team->players as $player)
+                                    <option value="{{ $player->id }}">{{ $player->name }}</option>
+                                @endforeach
+
+                            </select>
+                            @error('playerOut') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="form-group mt-3">

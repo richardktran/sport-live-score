@@ -10,21 +10,18 @@ use Livewire\Component;
 class CreateEventForm extends Component
 {
     public $key;
-    public $eventType = 'substitution';
-
+    public $eventType = 'goal';
     public $match; // Match that the event is happening in
-
     public $team; // Team that is involved in the event (e.g. team that scored a goal)
-
     public $player; // Player who is involved in the event (e.g. player who scored a goal)
-
     public $minute; // Minute of the match when the event happened
-
     public $assistant; // Player who assisted the event (e.g. player who assisted a goal)
+    public $playerIn;
+    public $playerOut;
 
     public $eventTypes = [
-        'substitution' => 'Substitution',
         'goal' => 'Goal',
+        'substitution' => 'Substitution',
         'yellow_card' => 'Yellow Card',
         'red_card' => 'Red Card',
     ];
@@ -40,15 +37,32 @@ class CreateEventForm extends Component
         return [
             'eventType' => 'required',
             'team' => 'required',
-            'player' => 'required',
             'minute' => 'required|numeric',
-            'assistant' => Rule::requiredIf($this->eventType === 'goal'),
+            'player' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('player')),
+            'assistant' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('assistant')),
+            'playerIn' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('playerIn')),
+            'playerOut' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('playerOut'))
         ];
     }
 
     public function selectedEvent()
     {
         //
+    }
+
+    public function eventFormConfig()
+    {
+        return [
+            'player' => ['goal', 'yellow_card', 'red_card'],
+            'assistant' => ['goal'],
+            'playerIn' => ['substitution'],
+            'playerOut' => ['substitution']
+        ];
+    }
+
+    public function checkWhetherFieldIsDisplayed($field)
+    {
+        return in_array($this->eventType, $this->eventFormConfig()[$field]);
     }
 
     public function createEvent(MatchEventRepository $matchEventRepository)
@@ -63,6 +77,8 @@ class CreateEventForm extends Component
                 'event_minute' => $this->minute,
                 'assistant_id' => $this->assistant,
                 'event_type' => $this->eventType,
+                'player_in_id' => $this->playerIn,
+                'player_out_id' => $this->playerOut
             ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
