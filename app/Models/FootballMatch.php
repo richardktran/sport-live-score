@@ -43,6 +43,6 @@ class FootballMatch extends Model
 
     public function events()
     {
-        return $this->hasMany(MatchEvent::class, 'match_id');
+        return $this->hasMany(MatchEvent::class, 'match_id')->orderBy('event_minute');
     }
 }
