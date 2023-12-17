@@ -31,6 +31,7 @@ class CreateEventForm extends Component
     {
         $this->match = $match;
         $this->team = $team;
+        $this->minute = $match->current_minute;
     }
 
     public function rules()
@@ -38,7 +39,7 @@ class CreateEventForm extends Component
         return [
             'eventType' => 'required',
             'team' => 'required',
-            'minute' => 'required|numeric',
+            'minute' => 'nullable|numeric',
             'player' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('player')),
             'assistant' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('assistant')),
             'playerIn' => Rule::requiredIf($this->checkWhetherFieldIsDisplayed('playerIn')),
@@ -75,7 +76,7 @@ class CreateEventForm extends Component
                 'match_id' => $this->match->id,
                 'team_id' => $this->team->id,
                 'player_id' => $this->player,
-                'event_minute' => $this->minute,
+                'event_minute' => $this->minute ?? $this->match->current_minute,
                 'assistant_id' => $this->assistant,
                 'event_type' => $this->eventType,
                 'player_in_id' => $this->playerIn,

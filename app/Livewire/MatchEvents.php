@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Events\MatchFinished;
+use App\Events\MatchStarted;
 use App\Models\FootballMatch;
 use App\Repositories\MatchEventRepository;
 use Livewire\Attributes\On;
@@ -18,7 +20,7 @@ class MatchEvents extends Component
         $this->events = $match->events;
     }
 
-    #[On('eventCreated')]
+    #[On('refreshEvent')]
     public function refreshEvents(MatchEventRepository $matchEventRepository, $matchId)
     {
         if ($matchId) {
@@ -35,7 +37,7 @@ class MatchEvents extends Component
 
         $this->match->save();
 
-        $this->dispatch('matchStarted');
+        event(new MatchStarted($this->match->id));
     }
 
     public function endMatch()
@@ -47,7 +49,7 @@ class MatchEvents extends Component
 
         $this->match->save();
 
-        $this->dispatch('matchFinished');
+        event(new MatchFinished($this->match->id));
     }
 
     public function render()

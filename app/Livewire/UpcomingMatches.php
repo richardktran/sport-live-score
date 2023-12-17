@@ -20,7 +20,7 @@ class UpcomingMatches extends Component
     #[On('refreshMatches')]
     public function refreshMatchList(MatchRepository $matchRepository)
     {
-        $this->matches = $matchRepository->getUpcomingMatches();
+        $this->matches = $this->sortMatchesByStatus($matchRepository->getUpcomingMatches());
     }
 
     public function sortMatchesByStatus($matches)

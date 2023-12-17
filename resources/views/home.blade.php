@@ -17,6 +17,18 @@
                     console.log('Event created');
                     Livewire.dispatch('refreshMatches');
                 });
+
+            Echo.channel(`match`)
+                .listen('MatchStarted', (e) => {
+                    console.log('Start match');
+                    Livewire.dispatch('refreshMatches');
+                });
+
+            Echo.channel(`match`)
+                .listen('MatchFinished', (e) => {
+                    console.log('End match');
+                    Livewire.dispatch('refreshMatches');
+                });
         });
     </script>
 </x-guest-layout>

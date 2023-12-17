@@ -6,15 +6,18 @@
                 <h5> {{ $match->homeTeam->name }}  &nbsp; </h5>
 
             </div>
-            <button class="btn btn-icon btn-primary rounded-circle mt-1" data-bs-toggle="modal" data-bs-target="#createHomeEventForm">
-                <em class="icon ni ni-plus"></em>
-            </button>
+            @if ($match->status == 'in-play')
+                <button class="btn btn-icon btn-primary rounded-circle mt-1" data-bs-toggle="modal" data-bs-target="#createHomeEventForm">
+                    <em class="icon ni ni-plus"></em>
+                </button>
+            @endif
+
         </div>
         <div class="col-2 d-flex flex-column align-items-center justify-content-center align-self-center">
             <div class='d-flex flex-column align-items-center'>
                 <h3> &nbsp; {{ $match->home_score }} - {{ $match->away_score }} &nbsp;</h3>
                 @if ($match->status !== 'finished')
-                    <span class="mb-2" wire:poll> &nbsp; ({{ $match->current_minute }}') &nbsp;</span>
+                    <span class="mb-2"> &nbsp; ({{ $match->current_minute }}') &nbsp;</span>
                 @endif
                 @if ($match->status == 'scheduled')
                     <button type="button" class="btn btn-success" wire:click='startMatch'>
@@ -38,9 +41,12 @@
 
                 <h5>  &nbsp; {{ $match->awayTeam->name }}</h5>
             </div>
-            <button class="btn btn-icon btn-primary rounded-circle mt-1" data-bs-toggle="modal" data-bs-target="#createAwayEventForm">
-                <em class="icon ni ni-plus"></em>
-            </button>
+
+            @if ($match->status == 'in-play')
+                <button class="btn btn-icon btn-primary rounded-circle mt-1" data-bs-toggle="modal" data-bs-target="#createAwayEventForm">
+                    <em class="icon ni ni-plus"></em>
+                </button>
+            @endif
         </div>
     </div>
 

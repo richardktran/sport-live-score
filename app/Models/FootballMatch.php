@@ -75,6 +75,21 @@ class FootballMatch extends Model
         }
     }
 
+    public function getIsFinishedAttribute(): bool
+    {
+        return $this->status === self::STATUS_FINISHED;
+    }
+
+    public function getIsInPlayAttribute(): bool
+    {
+        return $this->status === self::STATUS_IN_PLAY;
+    }
+
+    public function getIsScheduledAttribute(): bool
+    {
+        return $this->status === self::STATUS_SCHEDULED;
+    }
+
     public function getCurrentMinuteAttribute(): int
     {
         if ($this->status !== self::STATUS_IN_PLAY) {

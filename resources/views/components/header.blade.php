@@ -6,7 +6,7 @@
                         class="icon ni ni-menu"></em></a>
             </div>
             <div class="nk-header-brand">
-                <a href="html/index.html" class="logo-link">
+                <a href="/" class="logo-link">
                     <img class="logo-light logo-img" src="{{Vite::image('logo.png')}}" srcset="{{Vite::image('logo2x.png')}} 2x" alt="logo">
                     <img class="logo-dark logo-img" src="{{Vite::image('logo-dark.png')}}" srcset="{{Vite::image('logo-dark2x.png')}} 2x"
                         alt="logo-dark">
@@ -15,7 +15,7 @@
             <div class="nk-header-menu" data-content="headerNav">
                 <div class="nk-header-mobile">
                     <div class="nk-header-brand">
-                        <a href="html/index.html" class="logo-link">
+                        <a href="/" class="logo-link">
                             <img class="logo-light logo-img" src="{{Vite::image('logo.png')}}" srcset="{{Vite::image('logo2x.png')}} 2x"
                                 alt="logo">
                             <img class="logo-dark logo-img" src="{{Vite::image('logo-dark.png')}}"
