@@ -22,7 +22,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             Echo.channel(`match`)
             .listen('MatchCreated', (e) => {
-                Livewire.dispatch('matchCreated');
+                Livewire.dispatch('refreshMatches');
+            });
+
+            Echo.channel(`match`)
+            .listen('MatchEventCreated', (e) => {
+                console.log('Event created');
+                Livewire.dispatch('refreshMatches');
             });
         });
     </script>

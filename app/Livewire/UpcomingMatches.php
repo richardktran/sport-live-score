@@ -15,7 +15,7 @@ class UpcomingMatches extends Component
         $this->matches = $matchRepository->getUpcomingMatches();
     }
 
-    #[On('matchCreated')]
+    #[On('refreshMatches')]
     public function refreshMatchList(MatchRepository $matchRepository)
     {
         $this->matches = $matchRepository->getUpcomingMatches();
