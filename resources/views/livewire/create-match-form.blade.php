@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="form-group mt-3">
+            <div class="form-group mt-2">
                 <label for="location">Location:</label>
                 <input type="text" class="form-control" wire:model="location" id="location">
                 @error('location') <span class="text-danger">{{ $message }}</span> @enderror

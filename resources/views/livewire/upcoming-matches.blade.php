@@ -1,6 +1,21 @@
 <div class="container mt-5 ">
-    <div class="row">
-        <h3>Upcoming Matches</h3>
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Upcoming Matches</h3>
+            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-head-content">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMatchModal">
+                    Create a new match
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="createMatchModal" tabindex="-1" aria-labelledby="createMatchModalLabel"
+                    aria-hidden="true">
+                    @livewire('create-match-form')
+                </div>
+            </div><!-- .nk-block-head-content -->
+        </div><!-- .nk-block-between -->
     </div>
 
     @if (!is_null($matches) && count($matches) > 0)
