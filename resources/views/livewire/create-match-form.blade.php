@@ -76,7 +76,7 @@
 
     @script
         <script>
-            $wire.on('matchCreated', () => {
+            $wire.on('closeCreateMatchForm', () => {
                 // Close the modal
                 $('#closeMatchModal').click();
             });

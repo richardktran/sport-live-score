@@ -14,8 +14,6 @@ return new class() extends Migration {
             $table->id();
             $table->unsignedBigInteger('home_team_id');
             $table->unsignedBigInteger('away_team_id');
-            $table->integer('home_score')->nullable();
-            $table->integer('away_score')->nullable();
             $table->enum('status', ['scheduled', 'in-play', 'finished'])->default('scheduled');
             $table->dateTime('match_date');
             $table->string('location');

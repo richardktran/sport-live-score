@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\MatchCreated;
 use App\Repositories\MatchRepository;
 use App\Repositories\TeamRepository;
 use Carbon\Carbon;
@@ -52,7 +53,8 @@ class CreateMatchForm extends Component
 
         session()->flash('created', 'Match created successfully');
         $this->reset();
-        $this->dispatch('matchCreated');
+        $this->dispatch('closeCreateMatchForm');
+        event(new MatchCreated());
     }
 
     public function render(TeamRepository $teamRepository)

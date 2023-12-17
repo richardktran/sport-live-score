@@ -17,4 +17,13 @@
             @livewire('upcoming-matches')
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Echo.channel(`match`)
+            .listen('MatchCreated', (e) => {
+                Livewire.dispatch('matchCreated');
+            });
+        });
+    </script>
 </x-guest-layout>
