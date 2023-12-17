@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\MatchEventCreated;
 use App\Repositories\MatchEventRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -94,7 +95,8 @@ class CreateEventForm extends Component
         }
 
         $this->reset(['player', 'minute', 'assistant']);
-        $this->dispatch('eventCreated');
+        $this->dispatch('closeEventModal');
+        event(new MatchEventCreated($this->match->id));
     }
 
     public function render()

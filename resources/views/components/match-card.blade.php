@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-4 align-self-center">
             <div class="row">
-                <h2>VS</h2>
+                <h2>VS ({{ $match->home_score }} - {{ $match->away_score }})</h2>
             </div>
             <div class="row">
                 <h4>{{ $matchDate }}</h4>

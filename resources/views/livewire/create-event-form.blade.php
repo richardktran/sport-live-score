@@ -113,10 +113,10 @@
 
     @script
         <script>
-            $wire.on('eventCreated', () => {
+            $wire.on('closeEventModal' , () => {
                 // Close the modal
-                $key = $wire.get('key');
-                $('#'+$key+'closeCreateEventModal').click();
+                key = $wire.get('key');
+                $('#'+key+'closeCreateEventModal').click();
             });
         </script>
     @endscript

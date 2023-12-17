@@ -19,9 +19,11 @@ class MatchEvents extends Component
     }
 
     #[On('eventCreated')]
-    public function refreshEvents(MatchEventRepository $matchEventRepository)
+    public function refreshEvents(MatchEventRepository $matchEventRepository, $matchId)
     {
-        $this->events = $matchEventRepository->getEventsForMatch($this->match);
+        if ($matchId) {
+            $this->events = $matchEventRepository->getEventsForMatch($this->match);
+        }
     }
 
     public function render()
