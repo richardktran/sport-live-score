@@ -22,13 +22,44 @@
         @livewireStyles
     </head>
 
-    <body>
-        <div class="container mt-5">
-            {{ $slot }}
+    <body class="nk-body npc-invest bg-lighter no-touch nk-nio-theme">
+        <div class="nk-app-root">
+            <!-- wrap @s -->
+            <div class="nk-wrap ">
+                <!-- main header @s -->
+                <x-header />
+
+                <div class="nk-content nk-content-fluid">
+                    <div class="container-xl wide-xl">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nk-footer nk-footer-fluid bg-lighter">
+                    <div class="container-xl">
+                        <div class="nk-footer-wrap">
+                            <div class="nk-footer-copyright"> © 2020 DashLite. Template by <a href="#">Softnio</a>
+                            </div>
+                            <div class="nk-footer-links">
+                                <ul class="nav nav-sm">
+                                    <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wrap @e -->
         </div>
-    @livewireScripts
     </body>
 
+    @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

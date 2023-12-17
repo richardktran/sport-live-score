@@ -3,27 +3,31 @@
     $matchDate = \Carbon\Carbon::parse($match->match_date)->format('H:i d/m/Y');
 @endphp
 
-<a href="{{ route('match.details', $match) }}">
-    <div class="row justify-content-center my-4 py-2 text-center border rounded shadow">
-        <div class="col-md-4 align-self-center">
-            <img src="{{ Vite::image($match->homeTeam->logo) }}" alt="Kingstar SC" width="100"
-                height="100">
-            <h3>{{ $match->homeTeam->name }}</h3>
-        </div>
-        <div class="col-md-4 align-self-center">
-            <div class="row">
-                <h2>VS ({{ $match->home_score }} - {{ $match->away_score }})</h2>
+
+<a class="card text-white bg-secondary" href="{{ route('match.details', $match) }}">
+    <div class="card-header">Header</div>
+    <div class="card-inner">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-4 align-self-center">
+                <img src="{{ Vite::image($match->homeTeam->logo) }}" alt="Kingstar SC" width="80"
+                    height="80">
+                <h5 class="mt-2">{{ $match->homeTeam->name }}</h5>
             </div>
-            <div class="row">
-                <h4>{{ $matchDate }}</h4>
+            <div class="col-md-4 align-self-center">
+                <div class="row mb-2">
+                    <h4>VS ({{ $match->home_score }} - {{ $match->away_score }})</h4>
+                </div>
+                <div class="row mb-2">
+                    <h6>{{ $matchDate }}</h6>
+                </div>
+                <div class="row mb-2">
+                    <h6>{{ $match->location }}</h6>
+                </div>
             </div>
-            <div class="row">
-                <h4>{{ $match->location }}</h4>
+            <div class="col-md-4 align-self-center">
+                <img src="{{ Vite::image($match->awayTeam->logo) }}" alt="Arambagh FA" width="80" height="80">
+                <h5 class="mt-2">{{ $match->awayTeam->name }}</h5>
             </div>
-        </div>
-        <div class="col-md-4 align-self-center">
-            <img src="{{ Vite::image($match->awayTeam->logo) }}" alt="Arambagh FA" width="100" height="100">
-            <h3>{{ $match->awayTeam->name }}</h3>
         </div>
     </div>
 </a>
