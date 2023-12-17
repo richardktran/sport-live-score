@@ -11,8 +11,25 @@
             </button>
         </div>
         <div class="col-2 d-flex flex-column align-items-center justify-content-center align-self-center">
-            <div class='d-flex flex-row'>
+            <div class='d-flex flex-column align-items-center'>
                 <h3> &nbsp; {{ $match->home_score }} - {{ $match->away_score }} &nbsp;</h3>
+                @if ($match->status !== 'finished')
+                    <span class="mb-2" wire:poll> &nbsp; ({{ $match->current_minute }}') &nbsp;</span>
+                @endif
+                @if ($match->status == 'scheduled')
+                    <button type="button" class="btn btn-success" wire:click='startMatch'>
+                        Start now
+                    </button>
+                @elseif ($match->status == 'in-play')
+                    <button type="button" class="btn btn-success" wire:click='endMatch'>
+                        End now
+                    </button>
+                @else
+                    <div class="text-danger">
+                        (Ended)
+                    </div>
+                @endif
+
             </div>
         </div>
         <div class="col-5 d-flex flex-column align-items-center justify-content-center align-self-center">

@@ -24,7 +24,7 @@ class CreateMatchForm extends Component
         return [
             'homeTeam' => 'required',
             'awayTeam' => 'required',
-            'matchDate' => 'required',
+            'matchDate' => 'required:date:after_or_equal:today',
             'matchTime' => 'required',
             'location' => 'required',
             'referee' => 'nullable|string',

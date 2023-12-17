@@ -13,6 +13,7 @@ class FootballMatch extends Model
     public const STATUS_IN_PLAY = 'in-play';
     public const STATUS_FINISHED = 'finished';
 
+
     protected $table = 'matches';
 
     protected $fillable = [
@@ -58,5 +59,33 @@ class FootballMatch extends Model
             ->where('team_id', $this->away_team_id)
             ->where('event_type', '==', 'goal')
             ->count();
+    }
+
+    public function getStatusStringAttribute()
+    {
+        switch ($this->status) {
+            case self::STATUS_SCHEDULED:
+                return 'Upcoming';
+            case self::STATUS_IN_PLAY:
+                return 'Happening';
+            case self::STATUS_FINISHED:
+                return 'Finished';
+            default:
+                return 'Unknown';
+        }
+    }
+
+    public function getCurrentMinuteAttribute(): int
+    {
+        if ($this->status !== self::STATUS_IN_PLAY) {
+            return 0;
+        }
+
+        $matchDate = $this->match_date;
+        $now = now();
+
+        $diff = $matchDate->diffInMinutes($now);
+
+        return $diff;
     }
 }

@@ -4,9 +4,11 @@
 @endphp
 
 
-<a class="card text-white bg-secondary" href="{{ route('match.details', $match) }}">
-    <div class="card-header">Header</div>
-    <div class="card-inner">
+<a class="card text-white bg-secondary match-card" href="{{ route('match.details', $match) }}">
+    <div class="card-header bg-secondary text-success align-self-center pt-2">
+        {{ $match->status_string }}
+    </div>
+    <div class="card-inner py-3">
         <div class="row justify-content-center text-center">
             <div class="col-md-4 align-self-center">
                 <img src="{{ Vite::image($match->homeTeam->logo) }}" alt="Kingstar SC" width="80"

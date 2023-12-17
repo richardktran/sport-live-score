@@ -31,7 +31,7 @@ class MatchRepository extends BaseRepository
         try {
             return $this->model
                 ->with(['homeTeam', 'awayTeam'])
-                ->where('status', FootballMatch::STATUS_SCHEDULED)
+                // ->where('status', FootballMatch::STATUS_SCHEDULED)
                 ->orderBy('match_date', 'asc')
                 ->get();
         } catch (\Exception $e) {
