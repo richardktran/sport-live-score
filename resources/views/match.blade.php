@@ -1,4 +1,19 @@
 <x-guest-layout>
+    <div class="modal fade" id="createHomeEventForm" tabindex="-1" aria-labelledby="createHomeEventFormLabel" aria-hidden="true">
+        @livewire('create-event-form', [
+            'team' => $match->homeTeam,
+            'match' => $match,
+            'key' => 'create-event-home-modal'
+        ])
+    </div>
+
+    <div class="modal fade" id="createAwayEventForm" tabindex="-1" aria-labelledby="createAwayEventFormLabel" aria-hidden="true">
+        @livewire('create-event-form', [
+            'team' => $match->awayTeam,
+            'match' => $match,
+            'key' => 'create-event-away-modal'
+        ])
+    </div>
     @livewire('match-events', ['match' => $match])
 
 

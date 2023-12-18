@@ -1,4 +1,9 @@
 <x-guest-layout>
+<!-- Modal -->
+                <div class="modal fade" id="createMatchModal" tabindex="-1" aria-labelledby="createMatchModalLabel"
+                    aria-hidden="true">
+                    @livewire('create-match-form')
+                </div>
     <div class="row">
         <div class="col-12">
             @livewire('upcoming-matches')

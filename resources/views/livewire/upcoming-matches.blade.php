@@ -8,12 +8,6 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMatchModal">
                     Create a new match
                 </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="createMatchModal" tabindex="-1" aria-labelledby="createMatchModalLabel"
-                    aria-hidden="true">
-                    @livewire('create-match-form')
-                </div>
             </div><!-- .nk-block-head-content -->
         </div><!-- .nk-block-between -->
     </div>
