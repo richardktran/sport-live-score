@@ -53,7 +53,7 @@ class CreateMatchForm extends Component
 
         session()->flash('created', 'Match created successfully');
         $this->reset();
-        $this->dispatch('closeCreateMatchForm');
+        $this->dispatch('closeCreateMatchForm')->self();
         event(new MatchCreated());
     }
 
